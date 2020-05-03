@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:mimoto_card/LoginPage.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(
@@ -12,8 +13,10 @@ void main() {
 }
 
 class Welcome extends StatefulWidget {
+  
   @override
   State<StatefulWidget> createState() {
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     return WelcomeState();
   }
 }
@@ -26,16 +29,17 @@ class WelcomeState extends State<Welcome> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 2));
     // TODO: implement build
     return Scaffold(
         backgroundColor: Colors.black,
-        body: Center(
+        body: Container(
+          padding: const EdgeInsets.all(10.0),
+          alignment: Alignment.center,
 
           child: ColorizeAnimatedTextKit(
             
               text: ["MIMOTO CARD"],
-              textStyle: TextStyle(fontSize: 30.0, fontFamily: "Horizon",),
+              textStyle: TextStyle(fontSize: 50.0, fontFamily: "Horizon",),
               
               colors: [
                 Colors.blue,
@@ -45,7 +49,7 @@ class WelcomeState extends State<Welcome> {
                 
               ],
               totalRepeatCount: 2,
-              textAlign: TextAlign.start,
+              textAlign: TextAlign.center,
               alignment: AlignmentDirectional.topStart,
               onFinished: gotoLoginPage,
               ),
